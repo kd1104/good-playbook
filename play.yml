@@ -1,0 +1,17 @@
+---
+- name: setup
+  hosts: all
+  roles:
+    - role: basic-setup
+- name: install haproxy
+  hosts: frontends
+  roles:
+    - role: haproxy
+- name: install & configure tomcat
+  hosts: apps
+  roles:
+    - role: tomcat
+- name: install & configure postgres
+  hosts: appdbs
+  roles:
+    - role: geerlingguy.postgresql
